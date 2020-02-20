@@ -13,9 +13,9 @@ import edu.blackburn.cs.cs212.restaurantbase.Money;
  * @author jonathan.gabl
  */
 public class Coffee extends MenuItem{
-    private String name;
-    private Size size;
-    private Money basePrice;
+    protected Size size;
+    protected Money basePrice;
+    protected String name;
     public Coffee(String name, Size size, Money basePrice){
         super(name, basePrice);
         this.name = name;
@@ -34,6 +34,6 @@ public class Coffee extends MenuItem{
 
     @Override
     public String getReceiptItem() {
-    return ("\n"+size + " " + name);
+    return toString();
     }
 }

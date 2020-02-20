@@ -21,27 +21,32 @@ public class Runner {
     public static void main(String[] args) {
         Receipt receipt = new Receipt();
         // TODO code application logic here        
-        Money price = new Money(new Currency("dollars", "$"), 4.50);
+        Money price = new Money(4.50);
         Coffee drink = new Coffee("Covfefe", new Size("Large"), price);
         receipt.add(drink);
-
-        Money price2 = new Money(new Currency("dollars", "$"), 2.70);
-        Coffee drink2 = new Coffee("Java", new Size("Medium"), price2);
-        receipt.add(drink2);
         
-        Money price3 = new Money(new Currency("dollars", "$"), 4.20);
-        Coffee drink3 = new Coffee("Cappuccino", new Size("Venti"), price3);
-        receipt.add(drink3);
-        
-        Money price4 = new Money(new Currency("dollars", "$"), 6.90);
-        Coffee drink4 = new Coffee("Americano", new Size("Extra Large"), price4);
-        receipt.add(drink4);
-        
-        Money price5 = new Money(new Currency("dollars", "$"), 10.30);
-        Coffee drink5 = new Coffee("Black Coffee", new Size("Small"), price5);
+        Money price5 = new Money(10.30);
+        FancyCoffee drink5 = new FancyCoffee("Frappechino", new Size("Small"), price5);
+        Money price6 = new Money(1.00);
+        drink5.add(new Syrup("Chocolate",price6));
+        drink5.add(new Syrup("Caramel",price6));
+        drink5.add(new Syrup("Pure Sugar",price6));
         receipt.add(drink5);
         
+        Money price7 = new Money(1);
+        Money price8 = new Money(1.5);
+        Money price9 = new Money(.5);
+        
+        Sandwich sandwich = new Sandwich(price7);
+        sandwich.add(new Meat("Ham", price8));
+        sandwich.add(new Meat("Turkey", price9));
+        sandwich.add(new Topping("Lettuce", price8));
+        sandwich.add(new Topping("Ham", price9));
+        receipt.add(sandwich);
+       
+        
         System.out.println(receipt.prepare());
+        System.out.println("Total: "+receipt.getTotalPrice());
     }
 
 }
